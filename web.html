@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Putting User Input into JS Objects</title>
+    <style>
+
+body{
+    margin: 0;
+    padding: 0;
+    background-size: cover;
+    background-position: center;
+    font-family: sans-serif;
+}
+
+
+.login-box{
+    width: 320px;
+    height: 450px;
+    background: rgba(0, 0, 0, 0.1);
+    color: #fff;
+    top: 50%;
+    left: 50%;
+    position: ab
+        .formBox{
+color:red;
+            padding: 0.5rem 2rem;
+            text-align:center;
+            font-family:"SIMPSON";
+        align:"center";
+        }
+    </style>
+</head>
+<body>
+    <form>
+<div class="formbox1">
+        <div class="formBox">
+            <label for="title">about</label>
+            <input type="text" id="title" placeholder="eg:grootan"/>
+        </div>
+        <div class="formBox">
+            <label for="title">created</label>
+            <input type="number" id="yr" placeholder="eg:117392344"/>
+        </div>
+        
+<div class="formBox">
+            <label for="title">id</label>
+            <input type="text" id="title" placeholder="eg:grootan_123"/>
+        </div>
+<div class="formBox">
+            <label for="title">likes</label>
+            <input type="text" id="title" placeholder="eg:4229"/>
+        </div>
+<div class="formBox">
+            <label for="title">submitted</label>
+            <input type="text" id="title" placeholder="eg:[123.00,1.00]"/>
+        </div>
+<div class="formBox">
+            <button id="btn">submit</button>
+        </div>
+        
+</div>
+    </form>
+    <script>
+        let grootan = [];
+        // example {about:grootan,created:117392344,id:grootan_123,likes:4229,submitted:[123.00,1.00]}
+        const addgrootan = (ev)=>{
+            ev.preventDefault();  //to stop the form submitting
+            let json = {
+                about:document.getElementById('about').value,
+                created: Date.now(),
+                id: document.getElementById('id').value,
+                likes: document.getElementById('likes').value
+                submitted:ocument.getElementById('submitted').value
+            }
+            json.push(json);
+            document.forms[0].reset(); // to clear the form for the next entries
+            //document.querySelector('form').reset();
+
+            //for display purposes only
+            console.warn('added' , {json} );
+            let pre = document.querySelector('#msg pre');
+            pre.textContent = '\n' + JSON.stringify(json, '\t', 2);
+
+            //saving to localStorage
+            localStorage.setItem('MygrootanList', JSON.stringify(json) );
+        }
+        document.addEventListener('DOMContentLoaded', ()=>{
+            document.getElementById('btn').addEventListener('click', addgrootan);
+        });
+    </script>
+</body>
+</html
